@@ -1,0 +1,7 @@
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+  <% @alphabets.each do |alphabet| %>
+    <div class="p-4 border rounded shadow">
+      <%= link_to alphabet.name, alphabet_path(alphabet), class: "text-lg font-semibold text-blue-600 hover:underline" %>
+    </div>
+  <% end %>
+</div>
