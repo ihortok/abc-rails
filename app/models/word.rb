@@ -6,5 +6,5 @@ class Word < ApplicationRecord
   validates :content, presence: true
 
   # scopes
-  scope :starting_with, ->(letter) { where("content LIKE ?", "#{letter}%") }
+  scope :starting_with, ->(letter) { where("content LIKE ?", "#{letter.upcase}%") }
 end

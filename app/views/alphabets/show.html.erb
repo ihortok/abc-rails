@@ -5,7 +5,7 @@
 <div class="flex flex-wrap gap-4 mt-4">
   <% @alphabet.letters.each do |letter| %>
     <div class="mt-6 p-4 border rounded">
-      <h2 class="text-xl font-semibold mb-2"><%= letter.character %></h2>
+      <h2 class="text-xl font-semibold mb-2"><%= letter.character.upcase %></h2>
       <%= link_to "View Letter", alphabet_letter_path(@alphabet, letter), class: "text-blue-600 hover:underline" %>
     </div>
   <% end %>

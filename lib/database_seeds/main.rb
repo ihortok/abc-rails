@@ -6,6 +6,7 @@ module DatabaseSeeds
 
     def run
       EnglishAlphabetSeed.new.run
+      UkrainianAlphabetSeed.new.run
     end
   end
 end
