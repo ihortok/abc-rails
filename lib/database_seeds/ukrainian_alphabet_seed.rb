@@ -15,6 +15,54 @@ module DatabaseSeeds
       "Сірий" => "Gray",
       "Рожевий" => "Pink"
     }.freeze
+    WORD_PICTURES_DIR = File.join(__dir__, "files", "word_pictures")
+    WORD_IMAGE_FILENAMES = {
+      "Ананас" => "ananas.png",
+      "Антилопа" => "antelope.png",
+      "Апельсин" => "orange.png",
+      "Банан" => "banana.png",
+      "Бабуся" => "grandma.png",
+      "Бджола" => "bee.png",
+      "Ведмідь" => "bear.png",
+      "Ваза" => "vase.png",
+      "Вітер" => "wind.png",
+      "Гарбуз" => "pumpkin.png",
+      "Гусак" => "goose.png",
+      "Ґудзик" => "button.png",
+      "Ґанок" => "porch.png",
+      "Ґрунт" => "soil.png",
+      "Дерево" => "tree.png",
+      "Дім" => "house.png",
+      "Дорога" => "road.png",
+      "Екран" => "screen.png",
+      "Електрика" => "electricity.png",
+      "Енергія" => "energy.png",
+      "Єнот" => "raccoon.png",
+      "Єдність" => "unity.png",
+      "Єдиноріг" => "unicorn.png",
+      "Жирафа" => "giraffe.png",
+      "Жук" => "bug.png",
+      "Життя" => "life.png",
+      "Зебра" => "zebra.png",
+      "Зірка" => "star.png",
+      "Зима" => "winter.png",
+      "Іграшка" => "toy.png",
+      "Інструмент" => "tools.png",
+      "Ідея" => "idea.png",
+      "Їжак" => "hedgehog.png",
+      "Їжа" => "food.png",
+      "Їдальня" => "dining_room.png",
+      "Йогурт" => "yogurt.png",
+      "Йога" => "yoga.png",
+      "Йод" => "iodine.png",
+      "Кіт" => "cat.png",
+      "Книга" => "book.png",
+      "Квітка" => "flower.PNG",
+      "Лев" => "lion.png",
+      "Лампа" => "lamp.png",
+      "Лист" => "leaf.png",
+      "Миша" => "mouse.png"
+    }.freeze
 
 
     def run
@@ -71,6 +119,16 @@ module DatabaseSeeds
           if COLORS.keys.include?(word.content)
             color = Color.find_by(name: COLORS[word.content])
             word.colors << color if color
+          end
+
+          image_filename = WORD_IMAGE_FILENAMES[word.content]
+          next unless image_filename
+
+          image_path = File.join(WORD_PICTURES_DIR, image_filename)
+          next if word.image.attached? || !File.exist?(image_path)
+
+          File.open(image_path) do |file|
+            word.image.attach(io: file, filename: image_filename)
           end
         end
       end

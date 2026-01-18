@@ -3,8 +3,7 @@
 <%= link_to "Back to Alphabet", alphabet_path(@letter.alphabet), class: "text-blue-600 hover:underline" %>
 
 <h2 class="text-xl font-semibold mt-6 mb-2">Words starting with "<%= @letter.character.upcase %>":</h2>
-<ul class="list-disc list-inside">
-  <% @words.each do |word| %>
-    <li><%= word.content %></li>
-  <% end %>
-</ul>
+
+<div class="flex flex-wrap gap-4">
+  <%= render @words %>
+</div>
