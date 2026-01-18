@@ -86,58 +86,58 @@ module DatabaseSeeds
       ],
       "м" => [
         { content: "Миша", image: "mouse.png" },
-        { content: "Море" },
-        { content: "Місто" }
+        { content: "Море", image: "sea.png" },
+        { content: "Місто", image: "city.png" }
       ],
       "н" => [
-        { content: "Ніс" },
-        { content: "Нота" },
-        { content: "Небо" }
+        { content: "Ніс", image: "nose.png" },
+        { content: "Нота", image: "musical_notes.png" },
+        { content: "Небо", image: "sky.png" }
       ],
       "о" => [
-        { content: "Олівець" },
-        { content: "Око" },
-        { content: "Острів" }
+        { content: "Олівець", image: "pencil.png" },
+        { content: "Око", image: "eye.png" },
+        { content: "Острів", image: "island.png" }
       ],
       "п" => [
-        { content: "Пес" },
-        { content: "Птах" },
-        { content: "Пляж" },
+        { content: "Пес", image: "dog.png" },
+        { content: "Птах", image: "parrot.png" },
+        { content: "Пляж", image: "beach.png" },
         { content: "Помаранчевий", color: "Orange" }
       ],
       "р" => [
-        { content: "Ракета" },
-        { content: "Риба" },
-        { content: "Рука" },
+        { content: "Ракета", image: "rocket.png" },
+        { content: "Риба", image: "fish.png" },
+        { content: "Рука", image: "hand.png" },
         { content: "Рожевий", color: "Pink" }
       ],
       "с" => [
-        { content: "Сонце" },
-        { content: "Собака" },
-        { content: "Стіл" },
+        { content: "Сонце", image: "sun.png" },
+        { content: "Собака", image: "puppy.png" },
+        { content: "Стіл", image: "table.png" },
         { content: "Синій", color: "Blue" },
         { content: "Сірий", color: "Gray" }
       ],
       "т" => [
-        { content: "Тигр" },
-        { content: "Трава" },
-        { content: "Торт" }
+        { content: "Тигр", image: "tiger.png" },
+        { content: "Трава", image: "grass.png" },
+        { content: "Торт", image: "cake.png" }
       ],
       "у" => [
         { content: "Усмішка" },
-        { content: "Урок" },
-        { content: "Ураган" }
+        { content: "Урок", image: "lesson.png" },
+        { content: "Ураган", image: "hurricane.png" }
       ],
       "ф" => [
-        { content: "Фрукт" },
-        { content: "Фонтан" },
-        { content: "Фіалка" },
+        { content: "Фрукт", image: "fruit.png" },
+        { content: "Фонтан", image: "fontaine.png" },
+        { content: "Фіалка", image: "violet.png" },
         { content: "Фіолетовий", color: "Purple" }
       ],
       "х" => [
-        { content: "Хатина" },
-        { content: "Хліб" },
-        { content: "Хмара" }
+        { content: "Хатина", image: "hut.png" },
+        { content: "Хліб", image: "bread.png" },
+        { content: "Хмара", image: "cloud.png" }
       ],
       "ц" => [
         { content: "Цукор" },
@@ -146,7 +146,7 @@ module DatabaseSeeds
       ],
       "ч" => [
         { content: "Чайка" },
-        { content: "Час" },
+        { content: "Час", image: "clock.png" },
         { content: "Човен" },
         { content: "Червоний", color: "Red" },
         { content: "Чорний", color: "Black" }
@@ -168,9 +168,9 @@ module DatabaseSeeds
         { content: "Ювелір" }
       ],
       "я" => [
-        { content: "Яблуко" },
-        { content: "Ягода" },
-        { content: "Яхта" }
+        { content: "Яблуко", image: "apple.png" },
+        { content: "Ягода", image: "berries.png" },
+        { content: "Яхта", image: "yacht.png" }
       ]
     }.freeze
 
