@@ -15,4 +15,13 @@ Rails.application.routes.draw do
   resources :alphabets, only: [ :index, :show ] do
     resources :letters, only: [ :show ]
   end
+
+  namespace :admin do
+    root "dashboard#index"
+    get "dashboard", to: "dashboard#index"
+
+    resources :alphabets, only: [] do
+      resources :words, only: [ :index ]
+    end
+  end
 end

@@ -1,0 +1,24 @@
+<h1 class="text-2xl font-semibold mb-6">Alphabets</h1>
+
+<table class="min-w-full divide-y divide-gray-200 border border-gray-200">
+  <thead class="bg-gray-50">
+    <tr>
+      <th class="px-4 py-3 text-left text-sm font-semibold text-gray-700">Alphabet</th>
+      <th class="px-4 py-3 text-left text-sm font-semibold text-gray-700">Letters</th>
+    </tr>
+  </thead>
+  <tbody class="divide-y divide-gray-200 bg-white">
+    <% @alphabets.each do |alphabet| %>
+      <tr>
+        <td class="px-4 py-3 text-sm text-gray-900"><%= alphabet.name %></td>
+        <td class="px-4 py-3">
+          <div class="flex flex-wrap gap-2">
+            <% alphabet.letters.each do |letter| %>
+              <%= link_to letter.character.upcase, admin_alphabet_words_path(alphabet, letter_id: letter.character), class: "inline-flex h-8 w-8 items-center justify-center rounded border border-gray-200 text-sm text-gray-700 hover:bg-gray-100" %>
+            <% end %>
+          </div>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
