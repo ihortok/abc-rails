@@ -7,4 +7,6 @@ class Letter < ApplicationRecord
   # validations
   validates :character, presence: true, uniqueness: { scope: :alphabet_id }
   validates :position, presence: true, numericality: { only_integer: true, greater_than: 0 }
+
+  has_one_attached :sound
 end

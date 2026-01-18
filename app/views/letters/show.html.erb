@@ -2,8 +2,30 @@
 
 <%= link_to "Back to Alphabet", alphabet_path(@letter.alphabet), class: "text-blue-600 hover:underline" %>
 
+<% if @letter.sound.attached? %>
+  <div class="mt-4">
+    <button
+      type="button"
+      class="inline-flex items-center rounded border border-gray-300 px-3 py-1 text-sm font-semibold text-gray-700 hover:bg-gray-50"
+      id="letter-audio-button"
+    >
+      Listen
+    </button>
+    <audio id="letter-audio" src="<%= url_for(@letter.sound) %>" class="hidden"></audio>
+  </div>
+<% end %>
+
 <h2 class="text-xl font-semibold mt-6 mb-2">Words starting with "<%= @letter.character.upcase %>":</h2>
 
 <div class="flex flex-wrap gap-4">
   <%= render @words %>
 </div>
+
+<script>
+  (() => {
+    const button = document.getElementById("letter-audio-button");
+    const audio = document.getElementById("letter-audio");
+    if (!button || !audio) return;
+    button.addEventListener("click", () => audio.play());
+  })();
+</script>
