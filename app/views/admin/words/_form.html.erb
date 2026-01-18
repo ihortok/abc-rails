@@ -1,0 +1,50 @@
+<%= form_with model: [ :admin, alphabet, word ], class: "space-y-6" do |form| %>
+  <% if word.errors.any? %>
+    <div class="rounded border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">
+      <p class="font-semibold">Please fix the following:</p>
+      <ul class="list-disc pl-5">
+        <% word.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :content, class: "block text-sm font-medium text-gray-700" %>
+    <%= form.text_field :content, class: "mt-1 w-full rounded border-gray-300" %>
+  </div>
+
+  <div>
+    <%= form.label :image, class: "block text-sm font-medium text-gray-700" %>
+    <%= form.file_field :image, class: "mt-1 block w-full text-sm text-gray-700" %>
+    <% if word.image.attached? %>
+      <div class="mt-2">
+        <%= image_tag word.image, alt: word.content, class: "h-16 w-16 object-contain" %>
+      </div>
+    <% end %>
+  </div>
+
+  <div>
+    <p class="text-sm font-medium text-gray-700">Colors</p>
+    <div class="mt-2 grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
+      <label class="flex items-center gap-2 text-sm text-gray-700">
+        <%= radio_button_tag "word[color_ids][]", "", word.colors.empty?, id: "word_color_none" %>
+        <span class="inline-flex h-4 w-4 rounded-full border border-black/10 bg-white"></span>
+        <span>None</span>
+      </label>
+      <% colors.each do |color| %>
+        <label class="flex items-center gap-2 text-sm text-gray-700">
+          <%= radio_button_tag "word[color_ids][]", color.id, word.colors.first&.id == color.id, id: "word_color_#{color.id}" %>
+          <span class="inline-flex h-4 w-4 rounded-full border border-black/10" style="background-color: <%= color.code %>;"></span>
+          <span><%= color.name %></span>
+        </label>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="flex gap-3">
+    <%= form.submit class: "inline-flex items-center rounded bg-gray-900 px-4 py-2 text-sm font-semibold text-white hover:bg-gray-800" %>
+    <%= link_to "Cancel", admin_alphabet_words_path(alphabet), class: "inline-flex items-center rounded border border-gray-300 px-4 py-2 text-sm font-semibold text-gray-700 hover:bg-gray-50" %>
+  </div>
+<% end %>
