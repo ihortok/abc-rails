@@ -21,7 +21,8 @@ Rails.application.routes.draw do
     get "dashboard", to: "dashboard#index"
 
     resources :alphabets, only: [] do
-      resources :words, except: [ :show ]
+      resources :letters, only: [ :show ]
+      resources :words, except: [ :index, :show ]
     end
   end
 end

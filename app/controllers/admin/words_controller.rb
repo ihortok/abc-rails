@@ -1,17 +1,10 @@
 module Admin
   class WordsController < BaseController
     include AlphabetScoped
+    include WordsHelper
 
     before_action :set_word, only: [ :edit, :update, :destroy ]
     before_action :set_colors, only: [ :new, :edit, :create, :update ]
-
-    def index
-      @words = if params[:letter_id].present?
-        alphabet.words.starting_with(params[:letter_id])
-      else
-        alphabet.words
-      end
-    end
 
     def new
       @word = alphabet.words.new
@@ -24,7 +17,7 @@ module Admin
       @word = alphabet.words.new(word_params)
 
       if @word.save
-        redirect_to admin_alphabet_words_path(alphabet, letter_id: @word.starting_letter), notice: "Word created."
+        redirect_to letter_path_for(@word), notice: "Word created."
       else
         render :new, status: :unprocessable_entity
       end
@@ -32,15 +25,16 @@ module Admin
 
     def update
       if @word.update(word_params)
-        redirect_to admin_alphabet_words_path(alphabet, letter_id: @word.starting_letter), notice: "Word updated."
+        redirect_to letter_path_for(@word), notice: "Word updated."
       else
         render :edit, status: :unprocessable_entity
       end
     end
 
     def destroy
+      redirect_path = letter_path_for(@word)
       @word.destroy
-      redirect_to admin_alphabet_words_path(alphabet, letter_id: @word.starting_letter), notice: "Word deleted."
+      redirect_to redirect_path, notice: "Word deleted."
     end
 
     private
@@ -56,5 +50,6 @@ module Admin
     def word_params
       params.require(:word).permit(:content, :image, color_ids: [])
     end
+
   end
 end

@@ -16,6 +16,8 @@ class Word < ApplicationRecord
   has_one_attached :image
 
   def starting_letter
+    return nil if content.blank?
+
     content[0]
   end
 
