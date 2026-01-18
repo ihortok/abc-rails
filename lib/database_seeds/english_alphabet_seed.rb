@@ -5,8 +5,8 @@ module DatabaseSeeds
       alphabet = Alphabet.find_or_create_by(name: "English")
 
       # Create letters A-Z for the English alphabet
-      ("a".."z").to_a.each do |letter|
-        alphabet.letters.find_or_create_by(character: letter)
+      ("a".."z").to_a.each_with_index do |letter, index|
+        alphabet.letters.find_or_create_by(character: letter, position: index + 1)
       end
 
       # Create some words for each letter

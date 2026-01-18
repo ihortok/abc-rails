@@ -22,8 +22,8 @@ module DatabaseSeeds
       alphabet = Alphabet.find_or_create_by(name: "Ukrainian")
 
       # Create letters A-Z for the Ukrainian alphabet
-      LETTERS.each do |letter|
-        alphabet.letters.find_or_create_by(character: letter)
+      LETTERS.each_with_index do |letter, index|
+        alphabet.letters.find_or_create_by(character: letter, position: index + 1)
       end
 
       # Create some words for each letter
