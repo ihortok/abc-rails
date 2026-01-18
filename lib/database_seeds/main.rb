@@ -5,7 +5,7 @@ module DatabaseSeeds
     end
 
     def run
-      AlphabetsSeed.new.run
+      EnglishAlphabetSeed.new.run
     end
   end
 end

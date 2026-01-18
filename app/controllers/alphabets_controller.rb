@@ -4,6 +4,6 @@ class AlphabetsController < ApplicationController
   end
 
   def show
-    @alphabet = Alphabet.find(params[:id])
+    @alphabet = Alphabet.includes(:letters).find(params[:id])
   end
 end

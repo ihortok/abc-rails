@@ -12,5 +12,7 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root "alphabets#index"
 
-  resources :alphabets, only: [ :index, :show ]
+  resources :alphabets, only: [ :index, :show ] do
+    resources :letters, only: [ :show ]
+  end
 end
