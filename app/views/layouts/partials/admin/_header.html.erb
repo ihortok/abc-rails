@@ -1,0 +1,14 @@
+<header class="border-b border-gray-200 bg-white">
+  <div class="container mx-auto flex items-center justify-between px-4 py-4">
+    <div class="flex items-center gap-4">
+      <%= link_to "Dashboard", admin_root_path, class: "text-sm font-semibold text-gray-700 hover:text-gray-900" %>
+      <%= link_to "Back to App", root_path, class: "text-sm font-semibold text-gray-700 hover:text-gray-900" %>
+    </div>
+
+    <% if defined?(alphabet) && alphabet.present? %>
+      <%= link_to "Add word", new_admin_alphabet_word_path(alphabet), class: "inline-flex items-center rounded bg-gray-900 px-4 py-2 text-sm font-semibold text-white hover:bg-gray-800" %>
+    <% else %>
+      <span class="inline-flex items-center rounded bg-gray-200 px-4 py-2 text-sm font-semibold text-gray-500" title="Select an alphabet first">Add word</span>
+    <% end %>
+  </div>
+</header>
