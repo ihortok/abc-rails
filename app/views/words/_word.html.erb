@@ -2,5 +2,13 @@
   <% if word.image.attached? %>
     <%= image_tag word.image, alt: word.content, class: "h-20 w-20 object-contain" %>
   <% end %>
+  <% if word.colors.any? %>
+    <% swatch = word.colors.first %>
+    <div
+      class="h-20 w-20 rounded-full border border-black/10"
+      style="background-color: <%= swatch.code %>;"
+      title="<%= swatch.name %>"
+    ></div>
+  <% end %>
   <span><%= word.content %></span>
 </div>
