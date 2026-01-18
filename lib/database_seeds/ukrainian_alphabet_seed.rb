@@ -22,7 +22,7 @@ module DatabaseSeeds
       ],
       "г" => [
         { content: "Гарбуз", image: "pumpkin.png" },
-        { content: "Година" },
+        { content: "Година", image: "clock.png" },
         { content: "Гусак", image: "goose.png" }
       ],
       "ґ" => [
@@ -124,7 +124,7 @@ module DatabaseSeeds
         { content: "Торт", image: "cake.png" }
       ],
       "у" => [
-        { content: "Усмішка" },
+        { content: "Усмішка", image: "smile.png" },
         { content: "Урок", image: "lesson.png" },
         { content: "Ураган", image: "hurricane.png" }
       ],
