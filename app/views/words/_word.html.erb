@@ -1,6 +1,6 @@
-<div class="flex flex-col items-center gap-2">
+<div class="flex flex-col items-center gap-2 rounded-2xl border border-white/70 bg-white/90 p-4 text-center card-pop">
   <% if word.image.attached? %>
-    <%= image_tag word.image, alt: word.content, class: "h-20 w-20 object-contain" %>
+    <%= image_tag word.image, alt: word.content, class: "h-28 w-28 object-contain" %>
   <% end %>
   <% if word.colors.any? %>
     <% swatch = word.colors.first %>
@@ -10,5 +10,5 @@
       title="<%= swatch.name %>"
     ></div>
   <% end %>
-  <span><%= word.content %></span>
+  <span class="text-base font-semibold text-gray-700"><%= word.content %></span>
 </div>

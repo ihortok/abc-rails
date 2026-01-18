@@ -1,1 +1,65 @@
 @import "tailwindcss";
+
+@layer base {
+  :root {
+    --sunrise: #ffb780;
+    --citrus: #ffd56a;
+    --mint: #9ae6d1;
+    --sky: #8fd3ff;
+    --ink: #1f2937;
+  }
+
+  body {
+    font-family: "Noto Sans", "Trebuchet MS", sans-serif;
+    color: var(--ink);
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: "Noto Serif", "Georgia", serif;
+  }
+}
+
+@layer utilities {
+  .bg-sunrise {
+    background: linear-gradient(135deg, #fff4e8 0%, #fef8dc 40%, #ecfbf7 100%);
+  }
+
+  .card-pop {
+    box-shadow: 0 12px 30px rgba(15, 23, 42, 0.08);
+  }
+
+  .glow-ring {
+    box-shadow: 0 0 0 6px rgba(255, 214, 106, 0.35);
+  }
+
+  .fade-in {
+    animation: fadeIn 0.6s ease-out both;
+  }
+
+  .float-slow {
+    animation: floatSlow 6s ease-in-out infinite;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes floatSlow {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}

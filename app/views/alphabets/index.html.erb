@@ -1,7 +1,22 @@
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-  <% @alphabets.each do |alphabet| %>
-    <div class="p-4 border rounded shadow">
-      <%= link_to alphabet.name, alphabet_path(alphabet), class: "text-lg font-semibold text-blue-600 hover:underline" %>
-    </div>
-  <% end %>
-</div>
+<section class="fade-in">
+  <div class="mt-8 grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3">
+    <% @alphabets.each do |alphabet| %>
+      <%= link_to alphabet_path(alphabet), class: "group rounded-3xl border border-white/70 bg-white/90 p-6 backdrop-blur-sm card-pop transition hover:-translate-y-1" do %>
+        <div class="flex items-center justify-between">
+          <h3 class="text-3xl font-semibold text-gray-800"><%= alphabet.name %></h3>
+          <span class="rounded-full bg-orange-100 p-2 text-orange-600">
+            <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+            <span class="sr-only">Open</span>
+          </span>
+        </div>
+        <p class="mt-3 text-sm text-gray-600">
+          <%= alphabet.description %>
+        </p>
+        <div class="mt-6 flex items-center gap-2 text-sm font-semibold text-gray-700">
+          <span>Start learning</span>
+          <span class="text-lg transition group-hover:translate-x-1">→</span>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</section>

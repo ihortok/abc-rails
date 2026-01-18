@@ -2,7 +2,10 @@ module DatabaseSeeds
   class EnglishAlphabetSeed
     def run
       # Create or find the English alphabet
-      alphabet = Alphabet.find_or_create_by(name: "English")
+      alphabet = Alphabet.find_or_create_by(name: "ABC")
+      alphabet.update(
+        description: "The English alphabet consists of 26 letters used in the English language."
+      )
 
       # Create letters A-Z for the English alphabet
       ("a".."z").to_a.each_with_index do |letter, index|

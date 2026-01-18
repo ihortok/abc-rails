@@ -177,7 +177,10 @@ module DatabaseSeeds
 
     def run
       # Create or find the Ukrainian alphabet
-      alphabet = Alphabet.find_or_create_by(name: "Ukrainian")
+      alphabet = Alphabet.find_or_create_by(name: "Абетка")
+      alphabet.update(
+        description: "Українська абетка складається з 33 літер, які використовуються в українській мові."
+      )
 
       # Create letters A-Z for the Ukrainian alphabet
       LETTERS.each_with_index do |letter, index|

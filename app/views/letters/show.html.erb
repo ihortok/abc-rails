@@ -1,25 +1,36 @@
-<h1 class="text-2xl font-bold mb-4"><%= @letter.character.upcase %></h1>
+<section class="fade-in">
+  <div class="rounded-3xl border border-white/70 bg-white/90 p-6 card-pop">
+    <div class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+      <div class="flex items-center gap-4">
+        <div class="flex h-20 w-20 items-center justify-center rounded-3xl bg-teal-100 text-4xl font-semibold text-teal-700 glow-ring">
+          <%= @letter.character.upcase %>
+        </div>
+      </div>
+      <%= link_to "Back to Alphabet", alphabet_path(@letter.alphabet), class: "rounded-full border border-white/70 bg-white px-4 py-2 text-sm font-semibold text-gray-700 shadow-sm hover:border-gray-300" %>
+    </div>
 
-<%= link_to "Back to Alphabet", alphabet_path(@letter.alphabet), class: "text-blue-600 hover:underline" %>
-
-<% if @letter.sound.attached? %>
-  <div class="mt-4">
-    <button
-      type="button"
-      class="inline-flex items-center rounded border border-gray-300 px-3 py-1 text-sm font-semibold text-gray-700 hover:bg-gray-50"
-      id="letter-audio-button"
-    >
-      Listen
-    </button>
-    <audio id="letter-audio" src="<%= url_for(@letter.sound) %>" class="hidden"></audio>
+    <% if @letter.sound.attached? %>
+      <div class="mt-4">
+        <button
+          type="button"
+          class="inline-flex items-center rounded-full border border-gray-200 bg-white px-4 py-2 text-sm font-semibold text-gray-700 hover:text-gray-900"
+          id="letter-audio-button"
+        >
+          <i class="fa-solid fa-volume-high" aria-hidden="true"></i>
+          <span class="sr-only">Listen</span>
+        </button>
+        <audio id="letter-audio" src="<%= url_for(@letter.sound) %>" class="hidden"></audio>
+      </div>
+    <% end %>
   </div>
-<% end %>
 
-<h2 class="text-xl font-semibold mt-6 mb-2">Words starting with "<%= @letter.character.upcase %>":</h2>
-
-<div class="flex flex-wrap gap-4">
-  <%= render @words %>
-</div>
+  <div class="mt-8">
+    <h3 class="text-2xl font-semibold">Words starting with "<%= @letter.character.upcase %>"</h3>
+    <div class="mt-4 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
+      <%= render @words %>
+    </div>
+  </div>
+</section>
 
 <script>
   (() => {
