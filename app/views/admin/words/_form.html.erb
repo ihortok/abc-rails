@@ -29,13 +29,13 @@
     <p class="text-sm font-medium text-gray-700">Colors</p>
     <div class="mt-2 grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
       <label class="flex items-center gap-2 text-sm text-gray-700">
-        <%= radio_button_tag "word[color_ids][]", "", word.colors.empty?, id: "word_color_none" %>
+        <%= form.radio_button :color_id, "", checked: word.color_id.nil?, id: "word_color_none" %>
         <span class="inline-flex h-4 w-4 rounded-full border border-black/10 bg-white"></span>
         <span>None</span>
       </label>
       <% colors.each do |color| %>
         <label class="flex items-center gap-2 text-sm text-gray-700">
-          <%= radio_button_tag "word[color_ids][]", color.id, word.colors.first&.id == color.id, id: "word_color_#{color.id}" %>
+          <%= form.radio_button :color_id, color.id, checked: word.color_id == color.id, id: "word_color_#{color.id}" %>
           <span class="inline-flex h-4 w-4 rounded-full border border-black/10" style="background-color: <%= color.code %>;"></span>
           <span><%= color.name %></span>
         </label>

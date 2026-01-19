@@ -25,7 +25,7 @@ module DatabaseSeeds
 
           if word_entry[:color]
             color = Color.find_by(name: word_entry[:color])
-            word.colors << color if color
+            word.update(color: color) if color
           end
 
           image_filename = word_entry[:image]

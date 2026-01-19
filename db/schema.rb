@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_01_18_182534) do
+ActiveRecord::Schema[8.1].define(version: 2026_01_19_224942) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
   enable_extension "pgcrypto"
@@ -77,10 +77,12 @@ ActiveRecord::Schema[8.1].define(version: 2026_01_18_182534) do
 
   create_table "words", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "alphabet_id", null: false
+    t.uuid "color_id"
     t.string "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["alphabet_id"], name: "index_words_on_alphabet_id"
+    t.index ["color_id"], name: "index_words_on_color_id"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
@@ -89,4 +91,5 @@ ActiveRecord::Schema[8.1].define(version: 2026_01_18_182534) do
   add_foreign_key "color_words", "words"
   add_foreign_key "letters", "alphabets"
   add_foreign_key "words", "alphabets"
+  add_foreign_key "words", "colors"
 end

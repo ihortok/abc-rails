@@ -1,8 +1,7 @@
 class Word < ApplicationRecord
   # associations
   belongs_to :alphabet
-  has_many :color_words, dependent: :destroy
-  has_many :colors, through: :color_words
+  belongs_to :color, optional: true
 
   # validations
   validates :content, presence: true

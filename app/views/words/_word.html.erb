@@ -2,8 +2,8 @@
   <% if word.image.attached? %>
     <%= image_tag word.image, alt: word.content, class: "h-28 w-28 object-contain" %>
   <% end %>
-  <% if word.colors.any? %>
-    <% swatch = word.colors.first %>
+  <% if word.color.present? %>
+    <% swatch = word.color %>
     <div
       class="h-20 w-20 rounded-full border border-black/10"
       style="background-color: <%= swatch.code %>;"
