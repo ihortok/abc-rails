@@ -1,5 +1,11 @@
 module DatabaseSeeds
   class EnglishAlphabetSeed
+    require "json"
+
+    LETTERS = ("a".."z").to_a.freeze
+    WORD_PICTURES_DIR = File.join(__dir__, "files", "word_pictures")
+    WORD_SEEDS_PATH = File.join(__dir__, "files", "english_word_seeds.json")
+
     def run
       # Create or find the English alphabet
       alphabet = Alphabet.find_or_create_by(name: "ABC")
@@ -8,45 +14,31 @@ module DatabaseSeeds
       )
 
       # Create letters A-Z for the English alphabet
-      ("a".."z").to_a.each_with_index do |letter, index|
+      LETTERS.each_with_index do |letter, index|
         alphabet.letters.find_or_create_by(character: letter, position: index + 1)
       end
 
-      # Create some words for each letter
-      words = {
-        "a" => [ "Apple", "Ant", "Arrow" ],
-        "b" => [ "Ball", "Bat", "Bee" ],
-        "c" => [ "Cat", "Car", "Cup" ],
-        "d" => [ "Dog", "Door", "Duck" ],
-        "e" => [ "Elephant", "Egg", "Eagle" ],
-        "f" => [ "Fish", "Fan", "Frog" ],
-        "g" => [ "Goat", "Gate", "Gum" ],
-        "h" => [ "Hat", "Horse", "House" ],
-        "i" => [ "Ice", "Igloo", "Insect" ],
-        "j" => [ "Jar", "Jam", "Jacket" ],
-        "k" => [ "Kite", "Key", "Kangaroo" ],
-        "l" => [ "Lion", "Lamp", "Leaf" ],
-        "m" => [ "Monkey", "Moon", "Map" ],
-        "n" => [ "Nest", "Net", "Nose" ],
-        "o" => [ "Owl", "Orange", "Ox" ],
-        "p" => [ "Pig", "Pen", "Pineapple" ],
-        "q" => [ "Queen", "Quilt", "Quail" ],
-        "r" => [ "Rat", "Ring", "Rocket" ],
-        "s" => [ "Sun", "Star", "Snake" ],
-        "t" => [ "Tiger", "Tree", "Table" ],
-        "u" => [ "Umbrella", "Unicorn", "Urchin" ],
-        "v" => [ "Van", "Vase", "Violin" ],
-        "w" => [ "Wolf", "Water", "Wheel" ],
-        "x" => [ "Xylophone", "X-ray" ],
-        "y" => [ "Yak", "Yarn", "Yacht" ],
-        "z" => [ "Zebra", "Zoo", "Zipper" ]
-      }
+      word_seeds.each do |_letter, word_entries|
+        word_entries.each do |word_entry|
+          word = Word.find_or_create_by(content: word_entry[:content], alphabet: alphabet)
 
-      words.each do |letter, words|
-        words.each do |word|
-          Word.find_or_create_by(content: word, alphabet: alphabet)
+          image_filename = word_entry[:image]
+          next unless image_filename
+
+          image_path = File.join(WORD_PICTURES_DIR, image_filename)
+          next if word.image.attached? || !File.exist?(image_path)
+
+          File.open(image_path) do |file|
+            word.image.attach(io: file, filename: image_filename)
+          end
         end
       end
+    end
+
+    private
+
+    def word_seeds
+      JSON.parse(File.read(WORD_SEEDS_PATH), symbolize_names: true)
     end
   end
 end
