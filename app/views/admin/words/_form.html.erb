@@ -16,16 +16,6 @@
   </div>
 
   <div>
-    <%= form.label :image, class: "block text-sm font-medium text-gray-700" %>
-    <%= form.file_field :image, class: "mt-1 block w-full text-sm text-gray-700" %>
-    <% if word.image.attached? %>
-      <div class="mt-2">
-        <%= image_tag word.image, alt: word.content, class: "h-16 w-16 object-contain" %>
-      </div>
-    <% end %>
-  </div>
-
-  <div>
     <p class="text-sm font-medium text-gray-700">Colors</p>
     <div class="mt-2 grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
       <label class="flex items-center gap-2 text-sm text-gray-700">

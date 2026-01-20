@@ -53,8 +53,8 @@
       <tr>
         <td class="px-4 py-3 text-sm text-gray-900"><%= word.content %></td>
         <td class="px-4 py-3">
-          <% if word.image.attached? %>
-            <%= image_tag word.image, alt: word.content, class: "h-12 w-12 object-contain" %>
+          <% if word.picture_attached? %>
+            <%= image_tag word.picture, alt: word.content, class: "h-12 w-12 object-contain" %>
           <% else %>
             <span class="text-sm text-gray-400">—</span>
           <% end %>

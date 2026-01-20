@@ -1,5 +1,5 @@
 module DatabaseSeeds
-  class UkrainianAlphabetSeed
+  class UkrainianAlphabetSeed < BaseSeed
     require "json"
 
     LETTERS = %w[а б в г ґ д е є ж з и і ї й к л м н о п р с т у ф х ц ч ш щ ь ю я].freeze
@@ -32,11 +32,9 @@ module DatabaseSeeds
           next unless image_filename
 
           image_path = File.join(WORD_PICTURES_DIR, image_filename)
-          next if word.image.attached? || !File.exist?(image_path)
+          next unless File.exist?(image_path)
 
-          File.open(image_path) do |file|
-            word.image.attach(io: file, filename: image_filename)
-          end
+          attach_picture(word, image_path, image_filename)
         end
       end
     end

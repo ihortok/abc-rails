@@ -2,6 +2,7 @@ class Word < ApplicationRecord
   # associations
   belongs_to :alphabet
   belongs_to :color, optional: true
+  has_and_belongs_to_many :pictures
 
   # validations
   validates :content, presence: true
@@ -12,12 +13,18 @@ class Word < ApplicationRecord
   # callbacks
   before_save :titleize_content
 
-  has_one_attached :image
-
   def starting_letter
     return nil if content.blank?
 
     content[0]
+  end
+
+  def picture_attached?
+    pictures.first&.picture_file&.attached?
+  end
+
+  def picture
+    pictures.first&.picture_file
   end
 
   private

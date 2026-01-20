@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_01_19_224942) do
+ActiveRecord::Schema[8.1].define(version: 2026_01_20_183641) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
   enable_extension "pgcrypto"
@@ -75,6 +75,19 @@ ActiveRecord::Schema[8.1].define(version: 2026_01_19_224942) do
     t.index ["alphabet_id"], name: "index_letters_on_alphabet_id"
   end
 
+  create_table "pictures", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.string "title"
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "pictures_words", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "picture_id", null: false
+    t.uuid "word_id", null: false
+    t.index ["picture_id"], name: "index_pictures_words_on_picture_id"
+    t.index ["word_id"], name: "index_pictures_words_on_word_id"
+  end
+
   create_table "words", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "alphabet_id", null: false
     t.uuid "color_id"
@@ -90,6 +103,8 @@ ActiveRecord::Schema[8.1].define(version: 2026_01_19_224942) do
   add_foreign_key "color_words", "colors"
   add_foreign_key "color_words", "words"
   add_foreign_key "letters", "alphabets"
+  add_foreign_key "pictures_words", "pictures"
+  add_foreign_key "pictures_words", "words"
   add_foreign_key "words", "alphabets"
   add_foreign_key "words", "colors"
 end

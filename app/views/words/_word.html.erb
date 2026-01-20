@@ -1,6 +1,6 @@
 <div class="flex flex-col items-center gap-2 rounded-2xl border border-white/70 bg-white/90 p-4 text-center card-pop">
-  <% if word.image.attached? %>
-    <%= image_tag word.image, alt: word.content, class: "h-28 w-28 object-contain" %>
+  <% if word.picture_attached? %>
+    <%= image_tag word.picture, alt: word.content, class: "h-28 w-28 object-contain" %>
   <% end %>
   <% if word.color.present? %>
     <% swatch = word.color %>
