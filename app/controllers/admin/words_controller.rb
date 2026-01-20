@@ -50,6 +50,5 @@ module Admin
     def word_params
       params.require(:word).permit(:content, :image, :color_id)
     end
-
   end
 end

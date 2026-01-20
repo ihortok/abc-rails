@@ -24,5 +24,6 @@ Rails.application.routes.draw do
       resources :letters, only: [ :show, :update ]
       resources :words, except: [ :index, :show ]
     end
+    resources :pictures, only: [ :index, :new, :create, :destroy ]
   end
 end

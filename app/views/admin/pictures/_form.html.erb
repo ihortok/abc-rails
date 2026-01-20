@@ -1,0 +1,32 @@
+<%= form_with model: [ :admin, picture ], class: "space-y-6" do |form| %>
+  <% if picture.errors.any? %>
+    <div class="rounded border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">
+      <p class="font-semibold">Please fix the following:</p>
+      <ul class="list-disc pl-5">
+        <% picture.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :title, class: "block text-sm font-medium text-gray-700" %>
+    <%= form.text_field :title, class: "mt-1 w-full rounded border-gray-300" %>
+  </div>
+
+  <div>
+    <%= form.label :picture_file, "Image file", class: "block text-sm font-medium text-gray-700" %>
+    <%= form.file_field :picture_file, class: "mt-1 block w-full text-sm text-gray-700" %>
+    <% if picture.picture_file.attached? %>
+      <div class="mt-2">
+        <%= image_tag picture.picture_file, alt: picture.title, class: "h-20 w-20 object-contain" %>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="flex gap-3">
+    <%= form.submit class: "inline-flex items-center rounded bg-gray-900 px-4 py-2 text-sm font-semibold text-white hover:bg-gray-800" %>
+    <%= link_to "Cancel", admin_pictures_path, class: "inline-flex items-center rounded border border-gray-300 px-4 py-2 text-sm font-semibold text-gray-700 hover:bg-gray-50" %>
+  </div>
+<% end %>
