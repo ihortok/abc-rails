@@ -34,9 +34,9 @@
     { "content": "Dining Room", "image": "dining_room.png" }
   ],
   "e": [
-    { "content": "Elephant" },
-    { "content": "Egg" },
-    { "content": "Eagle" },
+    { "content": "Elephant", "image": "elephant.png" },
+    { "content": "Egg", "image": "egg.png" },
+    { "content": "Eagle", "image": "eagle.png" },
     { "content": "Electricity", "image": "electricity.png" },
     { "content": "Energy", "image": "energy.png" },
     { "content": "Eye", "image": "eye.png" }
@@ -72,13 +72,14 @@
   ],
   "j": [
     { "content": "Jeweler", "image": "jeweler.png" },
-    { "content": "Juice" },
-    { "content": "Jacket" }
+    { "content": "Juice", "image": "juice.png" },
+    { "content": "Jacket", "image": "jacket.png" },
+    { "content": "Jungle", "image": "jungle.png" }
   ],
   "k": [
-    { "content": "Kite" },
-    { "content": "Key" },
-    { "content": "Kangaroo" }
+    { "content": "Key", "image": "key.png" },
+    { "content": "Kangaroo", "image": "kangaroo.png" },
+    { "content": "Koala", "image": "koala.png" }
   ],
   "l": [
     { "content": "Lion", "image": "lion.png" },
@@ -89,37 +90,40 @@
     { "content": "Lips", "image": "lips.png" }
   ],
   "m": [
-    { "content": "Monkey" },
-    { "content": "Moon" },
-    { "content": "Map" },
+    { "content": "Monkey", "image": "monkey.png" },
+    { "content": "Moon", "image": "moon.png" },
+    { "content": "Map", "image": "map.png" },
     { "content": "Mouse", "image": "mouse.png" },
     { "content": "Musical Notes", "image": "musical_notes.png" }
   ],
   "n": [
-    { "content": "Nest" },
-    { "content": "Net" },
-    { "content": "Nose", "image": "nose.png" }
+    { "content": "Nest", "image": "nest.png" },
+    { "content": "Net", "image": "net.png" },
+    { "content": "Nose", "image": "nose.png" },
+    { "content": "Notebook", "image": "notebook.png" }
   ],
   "o": [
-    { "content": "Owl" },
+    { "content": "Owl", "image": "owl.png" },
     { "content": "Orange", "image": "orange.png" },
-    { "content": "Ox" }
+    { "content": "Ocean", "image": "ocean.png" },
+    { "content": "Onion", "image": "onion.png" }
   ],
   "p": [
-    { "content": "Pig" },
-    { "content": "Pen" },
+    { "content": "Pig", "image": "pig.png" },
+    { "content": "Pen", "image": "pen.png" },
     { "content": "Pineapple", "image": "pineapple.png" },
     { "content": "Parrot", "image": "parrot.png" },
     { "content": "Pencil", "image": "pencil.png" },
     { "content": "Pike", "image": "pike.png" },
     { "content": "Porch", "image": "porch.png" },
     { "content": "Pumpkin", "image": "pumpkin.png" },
-    { "content": "Puppy", "image": "puppy.png" }
+    { "content": "Puppy", "image": "puppy.png" },
+    { "content": "Pyramid", "image": "pyramid.png" }
   ],
   "q": [
-    { "content": "Queen" },
-    { "content": "Quilt" },
-    { "content": "Quail" }
+    { "content": "Queen", "image": "queen.png" },
+    { "content": "Quilt", "image": "quilt.png" },
+    { "content": "Quail", "image": "quail.png" }
   ],
   "r": [
     { "content": "Raspberry", "image": "raspberry.png" },
@@ -147,7 +151,7 @@
     { "content": "Toy", "image": "toy.png" }
   ],
   "u": [
-    { "content": "Umbrella" },
+    { "content": "Umbrella", "image": "umbrella.png" },
     { "content": "Unicorn", "image": "unicorn.png" },
     { "content": "Unity", "image": "unity.png" }
   ],
@@ -157,15 +161,16 @@
     { "content": "Violet", "image": "violet.png" }
   ],
   "w": [
-    { "content": "Wolf" },
-    { "content": "Water" },
-    { "content": "Wheel" },
+    { "content": "Wolf", "image": "wolf.png" },
+    { "content": "Water", "image": "water.png" },
+    { "content": "Wheel", "image": "wheel.png" },
     { "content": "Wind", "image": "wind.png" },
     { "content": "Winter", "image": "winter.png" }
   ],
   "x": [
-    { "content": "Xylophone" },
-    { "content": "X-ray" }
+    { "content": "Xylophone", "image": "xylophone.png" },
+    { "content": "X-ray", "image": "x-ray.png" },
+    { "content": "Xerox", "image": "xerox.png" }
   ],
   "y": [
     { "content": "Yacht", "image": "yacht.png" },
@@ -175,7 +180,7 @@
   ],
   "z": [
     { "content": "Zebra", "image": "zebra.png" },
-    { "content": "Zoo" },
-    { "content": "Zipper" }
+    { "content": "Zoo", "image": "zoo.png" },
+    { "content": "Zipper", "image": "zipper.png" }
   ]
 }
