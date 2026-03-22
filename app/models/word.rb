@@ -9,6 +9,7 @@ class Word < ApplicationRecord
 
   # scopes
   scope :starting_with, ->(letter) { where("content LIKE ?", "#{letter.upcase}%") }
+  scope :containing, ->(substring) { where("content LIKE ?", "%#{substring}%") }
 
   # callbacks
   before_validation :normalize_content

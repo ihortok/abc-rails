@@ -25,7 +25,9 @@
   </div>
 
   <div class="mt-8">
-    <h3 class="text-2xl font-semibold">Words starting with "<%= @letter.character.upcase %>"</h3>
+    <h3 class="text-2xl font-semibold">
+      Words <%= @contains_match ? "containing" : "starting with" %> "<%= @letter.character.upcase %>"
+    </h3>
     <div class="mt-4 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
       <%= render @words %>
     </div>
