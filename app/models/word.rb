@@ -11,7 +11,7 @@ class Word < ApplicationRecord
   scope :starting_with, ->(letter) { where("content LIKE ?", "#{letter.upcase}%") }
 
   # callbacks
-  before_save :titleize_content
+  before_validation :normalize_content
 
   def starting_letter
     return nil if content.blank?
@@ -27,9 +27,13 @@ class Word < ApplicationRecord
     pictures.first&.picture_file
   end
 
+  def self.normalize_content_value(value)
+    value.to_s.titleize
+  end
+
   private
 
-  def titleize_content
-    self.content = content.titleize
+  def normalize_content
+    self.content = self.class.normalize_content_value(content)
   end
 end

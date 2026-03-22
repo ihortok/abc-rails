@@ -21,7 +21,8 @@ module DatabaseSeeds
 
       word_seeds.each do |_letter, word_entries|
         word_entries.each do |word_entry|
-          word = Word.find_or_create_by(content: word_entry[:content], alphabet: alphabet)
+          normalized_content = Word.normalize_content_value(word_entry[:content])
+          word = Word.find_or_create_by(content: normalized_content, alphabet: alphabet)
 
           if word_entry[:color]
             color = Color.find_by(name: word_entry[:color])

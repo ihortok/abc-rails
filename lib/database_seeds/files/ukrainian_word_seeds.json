@@ -53,7 +53,11 @@
     { "content": "Зима", "image": "winter.png" },
     { "content": "Зелений", "color": "Green" }
   ],
-  "и": [],
+  "и": [
+    { "content": "Зима", "image": "winter.png" },
+    { "content": "Малина", "image": "raspberry.png" },
+    { "content": "Сани", "image": "sleigh.png" }
+  ],
   "і": [
     { "content": "Іграшка", "image": "toy.png" },
     { "content": "Інструмент", "image": "tools.png" },
@@ -136,32 +140,36 @@
     { "content": "Хмара", "image": "cloud.png" }
   ],
   "ц": [
-    { "content": "Цукор" },
-    { "content": "Цвіт" },
-    { "content": "Цирк" }
+    { "content": "Цукор", "image": "sugar.png" },
+    { "content": "Цвіт", "image": "bloom.png" },
+    { "content": "Цирк", "image": "circus.png" }
   ],
   "ч": [
-    { "content": "Чайка" },
+    { "content": "Чайка", "image": "gull.png" },
     { "content": "Час", "image": "clock.png" },
-    { "content": "Човен" },
+    { "content": "Човен", "image": "boat.png" },
     { "content": "Червоний", "color": "Red" },
     { "content": "Чорний", "color": "Black" }
   ],
   "ш": [
-    { "content": "Шапка" },
-    { "content": "Школа" },
-    { "content": "Шоколад" }
+    { "content": "Шапка", "image": "hat.png" },
+    { "content": "Школа", "image": "school.png" },
+    { "content": "Шоколад", "image": "chocolate.png" }
   ],
   "щ": [
-    { "content": "Щука" },
-    { "content": "Щастя" },
-    { "content": "Щітка" }
+    { "content": "Щука", "image": "pike.png" },
+    { "content": "Щастя", "image": "happiness.png" },
+    { "content": "Щітка", "image": "brush.png" }
   ],
-  "ь": [],
+  "ь": [
+    { "content": "День", "image": "day.png" },
+    { "content": "Кінь", "image": "horse.png" },
+    { "content": "Олень", "image": "deer.png" }
+  ],
   "ю": [
-    { "content": "Юрба" },
-    { "content": "Юнак" },
-    { "content": "Ювелір" }
+    { "content": "Юрба", "image": "crowd.png" },
+    { "content": "Юнак", "image": "youth.png" },
+    { "content": "Ювелір", "image": "jeweler.png" }
   ],
   "я": [
     { "content": "Яблуко", "image": "apple.png" },
