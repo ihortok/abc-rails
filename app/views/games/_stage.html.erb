@@ -1,0 +1,15 @@
+<%# Shared Christmas wrapper for every game page.
+    Usage: render layout: "games/stage", locals: { title:, back_path:, back_label: } do ... end %>
+<section class="fade-in relative overflow-hidden rounded-[2rem] border border-white/80 bg-frost card-pop">
+  <div class="garland" aria-hidden="true"></div>
+  <div class="snowfall" aria-hidden="true"></div>
+
+  <div class="relative z-10 px-4 pb-10 pt-8 sm:px-8">
+    <div class="flex items-center justify-between gap-4">
+      <h2 class="text-3xl font-semibold text-gray-800 sm:text-4xl"><%= title %></h2>
+      <%= link_to back_label, back_path, class: "shrink-0 rounded-full border border-white/70 bg-white/90 px-4 py-2 text-sm font-semibold text-gray-700 shadow-sm hover:border-gray-300" %>
+    </div>
+
+    <%= yield %>
+  </div>
+</section>

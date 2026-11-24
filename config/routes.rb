@@ -14,6 +14,11 @@ Rails.application.routes.draw do
 
   resources :alphabets, only: [ :index, :show ] do
     resources :letters, only: [ :show ]
+    resources :games, only: [ :index ]
+
+    namespace :games do
+      resource :missing_letters, only: [ :show ]
+    end
   end
 
   namespace :admin do

@@ -1,0 +1,74 @@
+<% content_for :title, "Допиши слово" %>
+<%# Keep Turbo from restoring a half-played board when navigating back. %>
+<% content_for :head do %>
+  <meta name="turbo-cache-control" content="no-cache">
+<% end %>
+
+<% messages = {
+  start: [ "Допоможи дописати слово!" ],
+  right: [ "Так!", "Правильно!", "Чудово!" ],
+  wrong: [ "Спробуй ще!", "Майже! Ще раз!", "Не ця літера. Спробуй іншу!" ],
+  done: [ "Молодець!", "Супер!", "Ти великий молодець!" ]
+} %>
+
+<%= render layout: "games/stage", locals: { title: "Допиши слово", back_path: alphabet_games_path(alphabet), back_label: "До ігор" } do %>
+  <% if @puzzles.empty? %>
+    <p class="mt-8 text-gray-600">There are no words with pictures for this game yet.</p>
+  <% else %>
+    <div
+      data-controller="games--missing-letters"
+      data-games--missing-letters-messages-value="<%= messages.to_json %>"
+    >
+      <div data-games--missing-letters-target="play">
+        <div class="mt-6 flex justify-center gap-2" aria-hidden="true">
+          <% @puzzles.size.times do %>
+            <span class="h-3 w-3 rounded-full border border-sky-200 bg-white" data-games--missing-letters-target="dot"></span>
+          <% end %>
+        </div>
+
+        <% @puzzles.each_with_index do |puzzle, index| %>
+          <%= render "games/missing_letters/puzzle", puzzle: puzzle, index: index %>
+        <% end %>
+
+        <div class="mx-auto mt-6 flex max-w-xl items-end justify-center gap-4">
+          <%= image_tag "christmas/elf.png", alt: "Ельф-помічник", class: "h-36 w-auto shrink-0", data: { "games--missing-letters-target": "elf" } %>
+          <p
+            class="speech-bubble mb-6 px-5 py-3 text-lg font-semibold text-gray-700"
+            aria-live="polite"
+            data-games--missing-letters-target="message"
+          >
+            Допоможи дописати слово!
+          </p>
+        </div>
+
+        <div class="mt-4 flex justify-center">
+          <button
+            type="button"
+            class="hidden rounded-full bg-green-600 px-8 py-3 text-xl font-semibold text-white shadow-lg transition hover:bg-green-700 hover:scale-105"
+            data-games--missing-letters-target="next"
+            data-action="games--missing-letters#next"
+          >
+            Далі →
+          </button>
+        </div>
+      </div>
+
+      <div class="hidden mx-auto mt-8 max-w-xl text-center" data-games--missing-letters-target="finish">
+        <div class="rounded-3xl border border-white/70 bg-white/90 p-6 card-pop">
+          <div class="flex items-end justify-center gap-4">
+            <%= image_tag "christmas/deer.png", alt: "Оленятко", class: "h-40 w-auto bounce-soft" %>
+            <div class="overflow-hidden rounded-3xl bg-red-100">
+              <%= image_tag "christmas/santa_claus.png", alt: "Санта Клаус", class: "h-52 w-auto" %>
+            </div>
+          </div>
+          <h3 class="mt-6 text-3xl font-semibold text-gray-800">Ти справжній молодець!</h3>
+          <p class="mt-2 text-gray-600">Санта пишається тобою.</p>
+          <div class="mt-6 flex flex-wrap justify-center gap-3">
+            <%= link_to "Грати знову", alphabet_games_missing_letters_path(alphabet), class: "rounded-full bg-green-600 px-6 py-3 text-lg font-semibold text-white shadow-lg hover:bg-green-700" %>
+            <%= link_to "До ігор", alphabet_games_path(alphabet), class: "rounded-full border border-gray-200 bg-white px-6 py-3 text-lg font-semibold text-gray-700 hover:border-gray-300" %>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+<% end %>

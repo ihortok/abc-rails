@@ -1,0 +1,39 @@
+<%# One round: the picture, the word with blanks, and the letter tray. Only the first round starts visible. %>
+<div class="<%= "hidden" unless index.zero? %> mt-6" data-games--missing-letters-target="puzzle">
+  <div class="mx-auto flex max-w-xl flex-col items-center gap-6 rounded-3xl border border-white/70 bg-white/90 p-6 card-pop">
+    <%# The alt text must not give the word away. %>
+    <%= image_tag puzzle.word.picture, alt: "Картинка до слова", class: "h-44 w-44 object-contain" %>
+
+    <div class="flex flex-wrap justify-center gap-2" role="group" aria-label="Слово">
+      <% puzzle.slots.each do |slot| %>
+        <% if slot.blank %>
+          <button
+            type="button"
+            class="flex h-14 w-14 items-center justify-center rounded-2xl border-2 border-dashed border-amber-400 bg-amber-50 text-2xl font-semibold text-amber-700 sm:h-16 sm:w-16"
+            data-expected="<%= slot.letter %>"
+            data-action="games--missing-letters#select"
+            aria-label="Пропущена літера"
+          ></button>
+        <% else %>
+          <span class="flex h-14 w-14 items-center justify-center rounded-2xl bg-amber-100 text-2xl font-semibold text-amber-700 sm:h-16 sm:w-16">
+            <%= slot.letter.upcase %>
+          </span>
+        <% end %>
+      <% end %>
+    </div>
+
+    <div class="flex flex-wrap justify-center gap-3" role="group" aria-label="Літери">
+      <% puzzle.tray.each_with_index do |letter, tile_index| %>
+        <%# Alternating red and green tiles, like baubles on the tree. %>
+        <button
+          type="button"
+          class="flex h-14 w-14 items-center justify-center rounded-full text-2xl font-semibold text-white shadow-md transition hover:scale-110 active:scale-95 sm:h-16 sm:w-16 <%= tile_index.even? ? "bg-linear-to-br from-red-400 to-red-600" : "bg-linear-to-br from-green-400 to-green-700" %>"
+          data-letter="<%= letter %>"
+          data-action="games--missing-letters#pick"
+        >
+          <%= letter.upcase %>
+        </button>
+      <% end %>
+    </div>
+  </div>
+</div>

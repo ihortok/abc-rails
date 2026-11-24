@@ -4,5 +4,8 @@
 
 import { application } from "./application"
 
+import Games__MissingLettersController from "./games/missing_letters_controller"
+application.register("games--missing-letters", Games__MissingLettersController)
+
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
